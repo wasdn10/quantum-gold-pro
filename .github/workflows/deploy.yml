@@ -24,7 +24,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          cache: 'npm'
 
       # Cache npm dependencies for faster builds
       - name: Cache Node Modules
@@ -35,14 +34,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      # Install dependencies, generate lock file if missing
+      # Install dependencies, use legacy peer deps to resolve conflicts
       - name: Install Dependencies
-        run: |
-          if [ ! -f package-lock.json ]; then
-            echo "Lock file not found, generating one..."
-            npm install --package-lock-only
-          fi
-          npm install
+        run: npm install --legacy-peer-deps
 
       # Run linting to ensure code quality
       - name: Lint Code
@@ -65,7 +59,7 @@ jobs:
           branch: gh-pages
           folder: build
 
-      # Send a notification if the build fails
+      # Notify if the build fails
       - name: Notify Failure
         if: failure()
         run: echo "Build failed. Check the logs for more details."
