@@ -34,9 +34,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      # Install dependencies, use legacy peer deps to resolve conflicts
+      # Install dependencies
       - name: Install Dependencies
         run: npm install --legacy-peer-deps
+
+      # Fix linting errors
+      - name: Fix Linting Errors
+        run: npm run lint -- --fix
 
       # Run linting to ensure code quality
       - name: Lint Code
