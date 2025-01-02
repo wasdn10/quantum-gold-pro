@@ -3,7 +3,7 @@
   "version": "2.1.0",
   "private": true,
   "description": "Real-time gold price tracker with advanced visualization and currency conversion.",
-  "homepage": "https://<your-username>.github.io/quantum-gold-pro",
+  "homepage": "https://wasdn10.github.io/quantum-gold-pro",
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@mantine/core": "^7.0.0",
@@ -45,3 +45,4 @@
     "tailwindcss": "^3.3.3",
     "typescript": "^5.1.6"
   }
+}
